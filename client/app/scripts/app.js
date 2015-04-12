@@ -8,26 +8,36 @@
  *
  * Main module of the application.
  */
-angular
-  .module('costSplitterApiApp', [
+var app = angular.module('costSplitterApiApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+]);
+
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl'
+    })
+    .when('/about', {
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
+    })
+    .when('/people', {
+      templateUrl: 'views/people.html',
+      controller: 'PeopleCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
+
+app.factory('Person', ['$resource', function($resource) {
+  return $resource('/api/v1/people/:id', null,
+    { 'update': { method:'PUT' } }
+  );
+}]);
