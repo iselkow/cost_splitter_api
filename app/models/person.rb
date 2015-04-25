@@ -3,4 +3,8 @@ class Person < ActiveRecord::Base
   has_many :expenses, through: :person_expense_records
 
   validates_presence_of :name
+
+  def balance
+    BalanceCalculator.call(self)
+  end
 end
