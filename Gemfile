@@ -19,6 +19,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
