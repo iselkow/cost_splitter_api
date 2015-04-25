@@ -1,5 +1,29 @@
-<h1>People</h1>
+<h2>People</h2>
 
-<ul ng-repeat="person in people">
-  <li>{{person.name}} - {{person.paid}}</li>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>Items Used</th>
+      <th>Paid?</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="person in people" ng-class="{ 'success': person.paid, 'danger': !person.paid }">
+      <td>{{ person.name }}</td>
+      <td>balance</td>
+      <td>expense_list</td>
+      <td>paid logic</td>
+      <td>edit link</td>
+      <td>delete link</td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
+<h2>Add New Person</h2>
+Form goes here
